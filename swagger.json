@@ -1,0 +1,171 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Rent Car API",
+    "description": "can be used to rent a car",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Cars Rent",
+      "description": "API for rent cars"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+
+  "paths": {
+    "/reservation": {
+      "get": {
+        "tags": ["Reservation"],
+        "summary": "get all reservations car",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/reservation"
+            }
+          }
+        }
+      }
+    },
+    "/reservation/info": {
+      "get": {
+        "tags": ["Reservation"],
+        "summary": "get report about reserved car in month",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/info"
+            }
+          }
+        }
+      }
+    },
+  "/reservation/add": {
+    "post": {
+      "tags": [
+        "Reservation"
+      ],
+      "summary": "Create new car reserv",
+      "description": "Create new car reservation",
+      "parameters": [
+        {
+          "name": "reservation",
+          "in": "body",
+          "description": "client ",
+          "schema": {
+            "$ref": "#/definitions/reservation"
+          }
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "New user is created",
+          "schema": {
+            "$ref": "#/definitions/reservation"
+          }
+        }
+      }
+    }
+  },
+    "/reservation/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "id for check reservation car",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Reservation"],
+        "summary": "Get all reserved car by car id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/reservation"
+            }
+          }
+        }
+      }
+    },
+    "/reservation/delete/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Add id number for delete reservation",
+          "type": "integer"
+        }
+      ],
+      "delete": {
+        "tags": ["Reservation"],
+        "summary": "Remove reservation by id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/reservation"
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "reservation": {
+      "properties": {
+        "_id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "client_id": {
+          "type": "integer"
+        },
+        "car_id": {
+          "type": "integer"
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Start date",
+          "example": "2017-01-01",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "Start date",
+          "example": "2017-01-01",
+          "format": "date"
+        }
+      }
+    },
+    "info": {
+      "properties": {
+        "percent": {
+          "type": "integer"
+        },
+        "carId": {
+          "type": "integer"
+        }
+
+      }
+    }
+  }
+}
+
