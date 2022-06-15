@@ -14,7 +14,6 @@ function sortCarsWithReservationInfo (cars){
  }
 
  function getAllDaysInReservation (car){
-     console.log(car)
      const allSumDays = []
      car.forEach(item =>{
         allSumDays.push((parseTimeToMilliseconds(item.enddate) - parseTimeToMilliseconds(item.startdate))/86400000)

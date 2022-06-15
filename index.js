@@ -5,9 +5,9 @@ const app = express();
 const carsRouter = require("./cars/cars.controller") ;
 const reservationRouter = require("./reservation/reservation.controller") ;
 const clientRouter = require("./client/client.controller") ;
-const {serve, setup} = require("swagger-ui-express");
 const swaggerDocument = require('./swagger.json');
 const swaggerUi = require("swagger-ui-express");
+const PORT = +process.env.PORT || 3000
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -23,6 +23,6 @@ app.use(
     swaggerUi.serve,
     swaggerUi.setup(swaggerDocument)
 );
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+    console.log('Server is running on port '+ PORT);
 })

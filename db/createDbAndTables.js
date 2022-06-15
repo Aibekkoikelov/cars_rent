@@ -5,8 +5,8 @@ const {Pool} = require("pg");
 
  async function createDB (dbName){
     const config = {
-        user: "postgres",
-        host: "localhost",
+        user: process.env.USER,
+        host: process.env.POSTGRES,
         database: "cars",
         password: "1234",
         port: 5432
